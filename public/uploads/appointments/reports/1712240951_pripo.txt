@@ -1,0 +1,29 @@
+[١:٤٣ م، ٢٠٢٢/٢/١٤] Zaza: 522079-pripo
+[١:٤٤ م، ٢٠٢٢/٢/١٤] Zaza: ftp.halal-auto.de
+[١:٤٥ م، ٢٠٢٢/٢/١٤] Zaza: FTP$pripo123
+[٣:٣٣ م، ٢٠٢٢/٢/١٤] Zaza: https://halal-auto.de/sqladmin/
+[٣:٣٥ م، ٢٠٢٢/٢/١٤] Zaza: [٤:٣٤ م، ٢٠٢١/١١/١] المهندس عمار: db522079_25
+[٤:٣٥ م، ٢٠٢١/١١/١] المهندس عمار: DB password :DB$pripo123
+
+
+pass samir  : $2y$10$DiO/EKEK/mcx9/CSnBpI.O9pKi2toxdIUS0g5jej/QTLFhnvdjuGi
+
+
+
+
+website : gtek.pri-po.com
+ftp :  ftp.halal-auto.de
+username : 522079-gtek-pripo
+password : pripo4gtek123
+
+
+[٤:٣٦ م، ٢٠٢٢/٥/٢٣] msarwat46: https://halal-auto.de/sqladmin/index.php?route=/sql&server=1&db=db522079_28&table=sub_tasks&pos=0
+[٤:٣٦ م، ٢٠٢٢/٥/٢٣] msarwat46: pass: pripo4gtek123-DB
+[٤:٣٦ م، ٢٠٢٢/٥/٢٣] msarwat46: user: db522079_28
+
+
+Amer
+$2y$10$ZWS4O98VvgAe4fqvNlzak.cqnniaTQfPAR7UhgcwkZKtbhT5rb2bG
+amar
+$2y$10$67pKYhkmVlArAH.ir1Ul4Oyf4AelgXohz2GcYJdQgXpPk0sj9s2TW
+
