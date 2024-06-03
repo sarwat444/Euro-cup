@@ -6344,6 +6344,31 @@ max-height: 65px;
 .radio input[type="radio"]:checked + .radio-label img {
     transform: scale(1.1); /* Slightly enlarge the image when checked */
 }
+.login_links
+{
+    float: right;
+    margin-top: -50px;
+    font-weight: 500;
+    position: relative;
+    margin-right: 85px;
+}
+.login_links span a{
+    color: #000;
+}
+.login_links .seperator
+{
+color: #b22029;
+font-weight: bold ;
+}
+.login_links span
+{
+    font-size: 15px;
+}
+.dropdown-item.active, .dropdown-item:active
+{
+    background-color: #b02028;
+    color: #fff;
+}
 @keyframes roll {
   100% {
     transform: rotate(360deg);

@@ -54,6 +54,7 @@
         <!-- responsive css -->
         <link rel="stylesheet" type="text/css"
             href="{{ asset(config('constants.asset_path') . 'assets/front/css/responsive.css') }}">
+            @stack('styles')
     </head>
 <body>
     <!--Preloader area start here-->

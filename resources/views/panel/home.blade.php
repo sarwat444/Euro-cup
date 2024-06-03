@@ -30,7 +30,7 @@
                         <div class="media media-wrapper justify-content-between">
                             <div class="media-body">
                                 <div class="greeting-user">
-                                    <h4 class="f-w-600">Welcome to Bousla Medical</h4>
+                                    <h4 class="f-w-600" style="text-transform: capitalize;">Welcome to Philex Pharmaceuticals</h4>
                                     <p>Here whats happing in your account today</p>
                                     <div class="whatsnew-btn"><a class="btn btn-outline-white">Website Home</a></div>
                                 </div>
@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h4>{{$appointments}}</h4><span class="f-light">Booking requests</span>
+                                        <h4>{{$appointments}}</h4><span class="f-light">Users</span>
                                     </div>
                                 </div>
 
@@ -110,7 +110,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <h4>{{$orders}}</h4><span class="f-light">Orders</span>
+                                            <h4>{{$orders}}</h4><span class="f-light">Advertisments</span>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h4>{{$doctors }}</h4><span class="f-light">Doctors</span>
+                                        <h4>{{$doctors }}</h4><span class="f-light">Votes</span>
                                     </div>
                                 </div>
                             </div>
@@ -160,58 +160,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <h4>{{$questions }}</h4><span class="f-light">Questions</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-6">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card widget-1">
-                            <div class="card-body">
-                                <div class="widget-content">
-                                    <div class="widget-round warning">
-                                        <div class="bg-round">
-                                            <svg class="svg-fill">
-                                                <use
-                                                    href="{{asset(config('constants.asset_path').'assets/panel/svg/icon-sprite.svg')}}#return-box"></use>
-                                            </svg>
-                                            <svg class="half-circle svg-fill">
-                                                <use
-                                                    href="{{asset(config('constants.asset_path').'assets/panel/svg/icon-sprite.svg')}}#halfcircle"></use>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h4>{{$medical_specialists}}</h4><span
-                                            class="f-light">Medical specialties</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12">
-                            <div class="card widget-1">
-                                <div class="card-body">
-                                    <div class="widget-content">
-                                        <div class="widget-round success">
-                                            <div class="bg-round">
-                                                <svg class="svg-fill">
-                                                    <use
-                                                        href="{{asset(config('constants.asset_path').'assets/panel/svg/icon-sprite.svg')}}#rate"></use>
-                                                </svg>
-                                                <svg class="half-circle svg-fill">
-                                                    <use
-                                                        href="{{asset(config('constants.asset_path').'assets/panel/svg/icon-sprite.svg')}}#halfcircle"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h4>{{$blogs}}</h4><span class="f-light">Blogs</span>
+                                            <h4>{{$questions }}</h4><span class="f-light">Winners</span>
                                         </div>
                                     </div>
                                 </div>
@@ -221,47 +170,6 @@
                 </div>
             </div>
 
-            <div class="col-xxl-8 col-lg-12 box-col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Booking requests</h5>
-                    </div>
-                    <div class="card-body">
-                        <div id="area-spaline"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xxl-4 col-xl-5 col-md-6 col-sm-7 notification box-col-6">
-                <div class="card height-equal orders_box" style="min-height:  512px !important;">
-                    <div class="card-header card-no-border">
-                        <div class="header-top">
-                            <h5 class="m-0">Latest Orders</h5>
-                        </div>
-                    </div>
-                    <div class="card-body pt-0">
-                        <ul>
-                            @if(!empty($latest_orders))
-                                @foreach($latest_orders as $order)
-                                    <li class="d-flex">
-                                        <div class="activity-dot-primary"></div>
-                                        <div class="w-100 ms-3">
-                                            <p class="d-flex justify-content-between mb-2"><span
-                                                    class="date-content light-background">{{$order->user->first_name}} {{$order->user->last_name}}</span><span>
-                                                        {{ date_format($order->created_at, 'd-m-Y') }}
-                                                <h6>{{$order->order}}<span class="dot-notification"></span></h6>
-                                                </span>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            @else
-                                <p>No Orders Found </p>
-                            @endif
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Container-fluid Ends-->

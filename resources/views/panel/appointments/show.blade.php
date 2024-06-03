@@ -24,9 +24,9 @@
                                         <div class="email-app-sidebar left-bookmark task-sidebar">
                                             <div class="common-flex align-items-center mb-3">
                                                 <div class="media-size-email">
-                                                    @if(!empty($appointment->patient->image) && file_exists(public_path(config('constants.asset_path') . 'uploads/patients/' . $appointment->patient->image)))
+                                                    @if(!empty($appointment->patient->image) && file_exists(public_path(config('constants.asset_path') . 'uploads/users/' . $appointment->patient->image)))
                                                         <img style="height: 50px" class="rounded-circle" alt=""
-                                                             src="{{ asset(config('constants.asset_path') . 'uploads/patients/' . $appointment->patient->image) }}">
+                                                             src="{{ asset(config('constants.asset_path') . 'uploads/users/' . $appointment->patient->image) }}">
                                                     @else
                                                         <img style="height: 50px" class="rounded-circle" alt=""
                                                              src="{{ asset(config('constants.asset_path') . 'assets/panel/images/default_user.png') }}">

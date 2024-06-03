@@ -1,13 +1,16 @@
 @extends('front.layouts')
 @push('title', __('front.Login'))
-@push('styles')@endpush
+@push('styles')
+<link rel="stylesheet" type="text/css"
+href="{{ asset(config('constants.asset_path') . 'assets/front/css/login.css') }}">
+@endpush
 @section('content')
     <div class="signup-area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 pl-0">
                     <div class="login-left">
-                        <img src="{{asset(config('constants.asset_path').'assets/front/img/login-bg.jpg')}}" alt="Login">
+                        <img src="{{asset(config('constants.asset_path').'assets/front/images/about-home.png')}}" alt="Login">
                     </div>
                 </div>
                 <div class="col-lg-6 ptb-100">

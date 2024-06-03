@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{asset(config('constants.asset_path').'assets/panel/images/favicon.png')}}')}}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset(config('constants.asset_path').'assets/panel/images/favicon.png')}}')}}" type="image/x-icon">
-    <title>Doctors Crm</title>
+    <title>PHILEX PHARMACEUTICALS</title>
     <!-- Google font-->
     <link href="../../css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
     <link href="../../css-1?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
         <div class="col-12 p-0">
           <div class="login-card login-dark">
             <div>
-              <div><a class="logo" href="index.html"><img style="height: 115px;" class="img-fluid for-light" src="{{asset(config('constants.asset_path').'assets/panel/images/logo/logo.png')}}" alt="looginpage"><img class="img-fluid for-dark" src="{{asset(config('constants.asset_path').'assets/panel/images/logo/logo_dark.png')}}" alt="looginpage"></a></div>
+              <div><a class="logo" href="#"><img style="height: 70px;" class="img-fluid for-light" src="{{asset(config('constants.asset_path').'assets/panel/images/logo/logo.png')}}" alt="looginpage"><img class="img-fluid for-dark" src="{{asset(config('constants.asset_path').'assets/panel/images/logo/logo_dark.png')}}" alt="looginpage"></a></div>
               <div class="login-main">
                 <div class="flash-message">
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -56,7 +56,7 @@
                   <p>Enter your email & password to login</p>
                   <div class="form-group">
                     <label class="col-form-label">Email Address</label>
-                    <input class="form-control" type="email" name="email" autocomplete="off" required="" placeholder="Test@gmail.com">
+                    <input class="form-control" type="email" name="email" value="Test@admin.com" autocomplete="off" required="" placeholder="Test@gmail.com">
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -66,7 +66,7 @@
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
                     <div class="form-input position-relative">
-                      <input class="form-control" type="password" name="password" required="" placeholder="*********" name="password" autocomplete="off">
+                      <input class="form-control" type="password" value="123456" name="password" required="" placeholder="*********" name="password" autocomplete="off">
                       <div class="show-hide"><span class="show">                         </span></div>
                       @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">

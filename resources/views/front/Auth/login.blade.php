@@ -1,16 +1,18 @@
 @extends('front.layouts')
 @push('title', __('front.Login'))
-@push('styles')@endpush
+@push('styles')
+<link rel="stylesheet" type="text/css"href="{{ asset(config('constants.asset_path') . 'assets/front/css/login.css') }}">
+@endpush
 @section('content')
     <div class="signup-area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 pl-0">
                     <div class="login-left">
-                        <img src="{{asset(config('constants.asset_path').'assets/front/img/login-bg.jpg')}}" alt="Login">
+                        <img src="{{asset(config('constants.asset_path').'assets/front/images/about-home.png')}}" alt="Login">
                     </div>
                 </div>
-                <div class="col-lg-6 ptb-100">
+                <div class="col-lg-6 ptb-100 sign-form">
                     <div class="signup-item">
                         <div class="signup-head">
                             <h2>{{__('front.Login Here')}}</h2>
@@ -33,7 +35,7 @@
                                             <div class="input-group">
                                                 <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('front.Password') }}">
                                                 <button type="button" id="togglePassword" class="btn btn-outline-secondary">
-                                                    <i class="icofont-eye"></i>
+                                                    <i class="fa fa-eye"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -85,10 +87,10 @@
             var passwordFieldType = passwordField.attr('type');
             if (passwordFieldType === 'password') {
                 passwordField.attr('type', 'text');
-                $('#togglePassword i').removeClass('icofont-eye').addClass('icofont-eye-blocked');
+                $('#togglePassword i').removeClass('fa-eye').addClass('fa-eye-slash');
             } else {
                 passwordField.attr('type', 'password');
-                $('#togglePassword i').removeClass('icofont-eye-blocked').addClass('icofont-eye');
+                $('#togglePassword i').removeClass('fa-eye-slash').addClass('fa-eye');
             }
         });
     </script>

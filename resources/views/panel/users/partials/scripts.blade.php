@@ -2,7 +2,7 @@
 <script src="{{asset(config('constants.asset_path').'assets/panel/js/datatable/datatables/datatable.custom.js')}}"></script>
 <script>
 
-    window.data_url = '{{route('panel.patients.all.data')}}';
+    window.data_url = '{{route('panel.users.all.data')}}';
     window.columns = [
         {
             data: 'DT_RowIndex', name: 'DT_RowIndex'
@@ -26,10 +26,6 @@
             title: '{{__('created at')}}',
             searchable: true,
             orderable: true
-        },{
-            data: 'action',
-            title: '{{__('action')}}',
-            orderable: false
         }
     ];
     window.search = "{{__('search')}}";

@@ -23,6 +23,7 @@ class AuthController extends Controller
 
     public function userLogin(LoginRequest $userLogin)
     {
+
         try {
             if (Auth::attempt(['email' => $userLogin->email, 'password' => $userLogin->password])) {
                 // Return success response

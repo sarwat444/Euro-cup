@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\{AlternativeMedicineController,
     GeneralQuestionController,
     HomeController,
     OrderController,
-    PatientController,
+    UsersController,
     QuestionController,
     specializesController};
 
@@ -117,21 +117,20 @@ Route::group(['middleware' => 'auth:admin'],function () {
 //        Route::delete('/{id}'   , [AppointmentController::class, 'delete'])->name('delete');
     });
 
-    Route::group(['prefix' => 'patients', 'as' => 'patients.'] , function () {
+    Route::group(['prefix' => 'users', 'as' => 'users.'] , function () {
         Route::group(['prefix' => 'create', 'as' => 'create.'], function () {
-            Route::get('/', [PatientController::class, 'create'])->name('index');
-            Route::post('/', [PatientController::class, 'store'])->name('store');
+            Route::get('/', [UsersController::class, 'create'])->name('index');
+            Route::post('/', [UsersController::class, 'store'])->name('store');
         });
         Route::group(['prefix' => 'edit', 'as' => 'edit.'], function () {
-            Route::get('/{id}'  , [PatientController::class, 'edit'])->name('index');
-            Route::post('/{id}' , [PatientController::class, 'update'])->name('update');
+            Route::get('/{id}'  , [UsersController::class, 'edit'])->name('index');
+            Route::post('/{id}' , [UsersController::class, 'update'])->name('update');
         });
         Route::group(['prefix' => 'all', 'as' => 'all.'], function () {
-            Route::get('/'      , [PatientController::class, 'index'])->name('index');
-            Route::get('/data'  , [PatientController::class, 'getDataTable'])->name('data');
+            Route::get('/'      , [UsersController::class, 'index'])->name('index');
+            Route::get('/data'  , [UsersController::class, 'getDataTable'])->name('data');
         });
-        Route::get('show/{id}'   , [PatientController::class, 'show'])->name('show');
-//        Route::delete('/{id}'   , [AppointmentController::class, 'delete'])->name('delete');
+        Route::get('show/{id}'   , [UsersController::class, 'show'])->name('show');
     });
 
     Route::group(['prefix' => 'orders', 'as' => 'orders.'] , function () {

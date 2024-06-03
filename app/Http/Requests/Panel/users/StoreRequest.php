@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Panel\patients;
+namespace App\Http\Requests\Panel\users;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

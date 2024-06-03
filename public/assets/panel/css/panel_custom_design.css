@@ -5,11 +5,11 @@
 }
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links li a svg
 {
-    fill: #19B9B7 ;
+    fill: #ad1f27 ;
 }
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content > li:hover .sidebar-link:not(.active):hover span
 {
-    color: #19B9B7 ;
+    color: #ad1f27 ;
 }
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content > li:hover
 {
@@ -23,10 +23,10 @@
 }
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content > li:hover
 {
-    fill: #19B9B7 ;
+    fill: #ad1f27 ;
 }
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content > li:hover .sidebar-link:not(.active):hover svg {
-    fill:  #19B9B7;
+    fill:  #ad1f27;
 }
 .orders_box .card-body
 {
@@ -43,11 +43,11 @@
 }
 .swal2-confirm
 {
-    background-color: #19b9b7 !important; ;
+    background-color: #ad1f27 !important; ;
 }
 .swal2-icon.swal2-success .swal2-success-ring
 {
-    border-color: #19b9b7 ;
+    border-color: #ad1f27 ;
 }
 .swal2-popup .swal2-styled.swal2-confirm {
     font-size: 14px;
@@ -65,20 +65,20 @@
     display: none;
 }
 .create_appointment_card button.submit {
-    background-color: #19b9b7 !important;
+    background-color: #ad1f27 !important;
     width: 150px;
     font-size: 16px;
     float: left;
 }
 .create_appointment_card .nav-link
 {
-    color: #19b9b7;
+    color: #ad1f27;
     background-color: #eee;
     margin-left: 7px;
 }
 .create_appointment_card .upload__btn:hover
 {
-    color: #19b9b7;
+    color: #ad1f27;
 }
 .create_appointment_card .step {
     border-bottom: 2px dashed #eee;
@@ -137,7 +137,7 @@
 .file-icon.fa-file-video ,
 .file-icon.fa-file-image
 {
-    color: #19B9B7;
+    color: #ad1f27;
     font-size: 21px;
     margin-bottom: 10px;
 }
@@ -245,7 +245,7 @@
 .user-profile .ttl-info h6
 {
     font-size: 13px;
-    color: #19b9b7;
+    color: #ad1f27;
     margin-bottom: 12px;
     font-weight: bold;
 }
@@ -260,7 +260,7 @@
 }
 .payment-box h3 {
     font-size: 21px;
-    color: #19B9B7;
+    color: #ad1f27;
     margin-bottom: 14px;
 }
 .payment-box h4

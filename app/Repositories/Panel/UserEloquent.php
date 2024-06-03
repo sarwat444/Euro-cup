@@ -10,20 +10,20 @@ use DataTables;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
-class PatientEloquent extends HelperEloquent
+class UserEloquent extends HelperEloquent
 {
 
     public function getDataTable()
     {
-        $patients = User::select('*')->where('user_type', 'user')->get();
-        return DataTables::of($patients)
+        $users = User::select('*')->where('user_type', 'user')->get();
+        return DataTables::of($users)
             ->addIndexColumn()
             ->addColumn('name', function ($patient) {
                 return $patient->first_name . ' ' . $patient->last_name;
             })->addColumn('created at', function ($patient) {
                 return date('d.m.y H:i', strtotime($patient->created_at));
             })->addColumn('action', function ($patient) {
-                return view('panel.patients.partials.actions', compact('patient'))->render();
+                return view('panel.users.partials.actions', compact('patient'))->render();
             })
             ->rawColumns(['action'])
             ->make(true);
@@ -38,7 +38,7 @@ class PatientEloquent extends HelperEloquent
             $data['user_type'] = 'user';
             $data['password'] = bcrypt('12345678');
             if(isset($data['image'])){
-                $data['image'] = uploadImage($data['image'], 'patients');
+                $data['image'] = uploadImage($data['image'], 'users');
             }
             User::updateOrCreate(['id' => 0], $data);
             $message = __('message_done');
