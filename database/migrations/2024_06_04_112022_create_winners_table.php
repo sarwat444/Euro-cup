@@ -11,15 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('winners', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('user_id');
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('match_name' , 255)->nullable();
-            $table->string('home_participant' , 255)->nullable();
-            $table->string('away_participant' ,50)->nullable();
-            $table->string('vote' ,50)->nullable() ;
-            $table->softDeletes();
+
+            $table->unsignedBigInteger('vote_id');
+
+            $table->foreign('vote_id')->references('id')->on('votes')->onDelete('cascade');
+
+            $table->string('match_name')->nullable() ;
+
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('winners');
     }
 };

@@ -8,7 +8,7 @@ html,
 body {
   font-size: 15px;
   color: #555555;
-  font-family: 'Gotham Book'  ; 
+  font-family: 'Gotham Book'  ;
   vertical-align: baseline;
   font-weight: 400;
   overflow-x: hidden;
@@ -1416,7 +1416,7 @@ blockquote i:before {
     04. Slider Section CSS
   -----------------------------------*/
 .rs-slider.home-slider .single-slider {
-  background: 
+  background:
     linear-gradient(
       rgba(0, 0, 0, 0.5),  /* Adjust the colors and transparency as needed */
       rgba(0, 0, 0, 0.5)
@@ -3154,7 +3154,7 @@ blockquote i:before {
 .rs-lates-news.home6-latest-news .match-details .match-list-sidebar .match-list .sidebar-fixture .list-2 table tbody tr td .match-time {
   color: #fff;
   font-weight: bold ;
- 
+
 
 }
 .rs-lates-news.home6-latest-news .match-details .match-list-sidebar .match-list .sidebar-fixture .list-3 {
@@ -3216,7 +3216,7 @@ blockquote i:before {
   color: #ffffff;
 }
 .rs-lates-news.home6-latest-news .match-details .sidebar-result .sidebar-part .list-result table tbody td .total-goal {
-  font-size: 30px;
+  font-size: 23px;
   font-weight: 600;
   padding: 15px 0;
   letter-spacing: 6px;
@@ -6031,7 +6031,7 @@ blockquote i:before {
 max-height: 65px;
 }
 /* -------------------------------------
-    37. Error Section CSS 
+    37. Error Section CSS
 --------------------------------------*/
 .rs-page-error {
   background: url(images/404.jpg);
@@ -6342,6 +6342,33 @@ max-height: 65px;
 .radio input[type="radio"]:checked + .radio-label img {
     transform: scale(1.1); /* Slightly enlarge the image when checked */
 }
+.sticky-sidebar
+{
+    padding: 0 !important;
+}
+
+@media only screen and (max-width: 900px) {
+    .home6-latest-news
+    {
+        padding-top: 0 !important;
+    }
+}
+
+.rs-lates-news.home6-latest-news .match-details .title-part .title:before
+{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-left: 15px solid #B22029;
+    border-bottom: 12px solid transparent;
+    border-left-color: #B22029;
+}
+
+
 @keyframes roll {
   100% {
     transform: rotate(360deg);

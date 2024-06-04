@@ -8,7 +8,7 @@ html,
 body {
   font-size: 15px;
   color: #555555;
-  font-family: 'Gotham Book'  ; 
+  font-family: 'Gotham Book'  ;
   vertical-align: baseline;
   font-weight: 400;
   overflow-x: hidden;
@@ -1416,7 +1416,7 @@ blockquote i:before {
     04. Slider Section CSS
   -----------------------------------*/
 .rs-slider.home-slider .single-slider {
-  background: 
+  background:
     linear-gradient(
       rgba(0, 0, 0, 0.5),  /* Adjust the colors and transparency as needed */
       rgba(0, 0, 0, 0.5)
@@ -3066,7 +3066,7 @@ blockquote i:before {
 .rs-lates-news.home6-latest-news .match-details .title-part .title {
   position: relative;
   padding-left: 25px;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 40px;
   font-weight: 700;
   color: #111;
@@ -3154,7 +3154,7 @@ blockquote i:before {
 .rs-lates-news.home6-latest-news .match-details .match-list-sidebar .match-list .sidebar-fixture .list-2 table tbody tr td .match-time {
   color: #fff;
   font-weight: bold ;
- 
+
 
 }
 .rs-lates-news.home6-latest-news .match-details .match-list-sidebar .match-list .sidebar-fixture .list-3 {
@@ -6031,7 +6031,7 @@ blockquote i:before {
 max-height: 65px;
 }
 /* -------------------------------------
-    37. Error Section CSS 
+    37. Error Section CSS
 --------------------------------------*/
 .rs-page-error {
   background: url(images/404.jpg);

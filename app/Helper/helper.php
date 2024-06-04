@@ -1,8 +1,15 @@
 <?php
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Models\{Vote,Winner} ;
 
-
+function checkWinner($vote_id, $user_id) {
+    $vote = Vote::find($vote_id);
+    if (!$vote) {
+        return false;
+    }
+    return Winner::where(['vote_id' => $vote_id, 'user_id' => $vote->user_id])->exists();
+}
 
 function locales()
 {

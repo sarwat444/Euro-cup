@@ -7,13 +7,13 @@ use App\Http\Controllers\Admin\{AlternativeMedicineController,
     BlogController,
     CategoryController,
     ContactUsController,
-    DoctorController,
+    WinnerController,
     GeneralQuestionController,
     HomeController,
-    OrderController,
+    VotesController,
     UsersController,
     QuestionController,
-    specializesController};
+    advertismentsController};
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('admin.showLoginForm');
 Route::post('/login', [LoginController::class, 'login'])->name('admin.login');
@@ -43,25 +43,25 @@ Route::group(['middleware' => 'auth:admin'],function () {
         Route::post('/operation', [CategoryController::class, 'operation'])->name('operation');
     });
 
-    Route::group(['prefix' => 'specializes', 'as' => 'specializes.'] , function () {
+    Route::group(['prefix' => 'advertisments', 'as' => 'advertisments.'] , function () {
 
         Route::group(['prefix' => 'create', 'as' => 'create.'], function () {
-            Route::get('/', [specializesController::class, 'create'])->name('index');
-            Route::post('/', [specializesController::class, 'store'])->name('store');
+            Route::get('/', [advertismentsController::class, 'create'])->name('index');
+            Route::post('/', [advertismentsController::class, 'store'])->name('store');
         });
 
         Route::group(['prefix' => 'edit', 'as' => 'edit.'], function () {
-            Route::get('/{id}'  , [specializesController::class, 'edit'])->name('index');
-            Route::post('/{id}' , [specializesController::class, 'update'])->name('update');
+            Route::get('/{id}'  , [advertismentsController::class, 'edit'])->name('index');
+            Route::post('/{id}' , [advertismentsController::class, 'update'])->name('update');
         });
 
         Route::group(['prefix' => 'all', 'as' => 'all.'], function () {
-            Route::get('/'      , [specializesController::class, 'index'])->name('index');
-            Route::get('/data'  , [specializesController::class, 'getDataTable'])->name('data');
+            Route::get('/'      , [advertismentsController::class, 'index'])->name('index');
+            Route::get('/data'  , [advertismentsController::class, 'getDataTable'])->name('data');
         });
 
-        Route::delete('/{id}'   , [specializesController::class, 'delete'])->name('delete');
-        Route::post('/operation', [specializesController::class, 'operation'])->name('operation');
+        Route::delete('/{id}'   , [advertismentsController::class, 'delete'])->name('delete');
+        Route::post('/operation', [advertismentsController::class, 'operation'])->name('operation');
     });
 
 
@@ -92,29 +92,26 @@ Route::group(['middleware' => 'auth:admin'],function () {
         Route::get('changeStatus/{id}'   , [AppointmentController::class, 'changeStatus'])->name('changeStatus');
     });
 
-    Route::group(['prefix' => 'doctors', 'as' => 'doctors.'] , function () {
+    Route::group(['prefix' => 'winners', 'as' => 'winners.'] , function () {
 
         Route::group(['prefix' => 'create', 'as' => 'create.'], function () {
-            Route::get('/', [DoctorController::class, 'create'])->name('index');
-            Route::post('/', [DoctorController::class, 'store'])->name('store');
+            Route::get('/', [WinnerController::class, 'create'])->name('index');
+            Route::post('/', [WinnerController::class, 'store'])->name('store');
         });
 
         Route::group(['prefix' => 'edit', 'as' => 'edit.'], function () {
-            Route::get('/{id}'  , [DoctorController::class, 'edit'])->name('index');
-            Route::post('/{id}' , [DoctorController::class, 'update'])->name('update');
+            Route::get('/{id}'  , [WinnerController::class, 'edit'])->name('index');
+            Route::post('/{id}' , [WinnerController::class, 'update'])->name('update');
         });
 
         Route::group(['prefix' => 'all', 'as' => 'all.'], function () {
-            Route::get('/'      , [DoctorController::class, 'index'])->name('index');
-            Route::get('/data'  , [DoctorController::class, 'getDataTable'])->name('data');
+            Route::get('/'      , [WinnerController::class, 'index'])->name('index');
+            Route::get('/data'  , [WinnerController::class, 'getDataTable'])->name('data');
         });
 
-        Route::get('show/{id}'   , [DoctorController::class, 'show'])->name('show');
+        Route::get('show/{id}'   , [WinnerController::class, 'show'])->name('show');
 
-        Route::get('changeStatus/{id}'   , [DoctorController::class, 'changeStatus'])->name('changeStatus');
-
-
-//        Route::delete('/{id}'   , [AppointmentController::class, 'delete'])->name('delete');
+        Route::get('changeStatus/{id}'   , [WinnerController::class, 'changeStatus'])->name('changeStatus');
     });
 
     Route::group(['prefix' => 'users', 'as' => 'users.'] , function () {
@@ -133,22 +130,22 @@ Route::group(['middleware' => 'auth:admin'],function () {
         Route::get('show/{id}'   , [UsersController::class, 'show'])->name('show');
     });
 
-    Route::group(['prefix' => 'orders', 'as' => 'orders.'] , function () {
+    Route::group(['prefix' => 'votes', 'as' => 'votes.'] , function () {
         Route::group(['prefix' => 'create', 'as' => 'create.'], function () {
-            Route::get('/', [OrderController::class, 'create'])->name('index');
-            Route::post('/', [OrderController::class, 'store'])->name('store');
+            Route::get('/', [VotesController::class, 'create'])->name('index');
+            Route::post('/', [VotesController::class, 'store'])->name('store');
         });
         Route::group(['prefix' => 'edit', 'as' => 'edit.'], function () {
-            Route::get('/{id}'  , [OrderController::class, 'edit'])->name('index');
-            Route::post('/{id}' , [OrderController::class, 'update'])->name('update');
+            Route::get('/{id}'  , [VotesController::class, 'edit'])->name('index');
+            Route::post('/{id}' , [VotesController::class, 'update'])->name('update');
         });
         Route::group(['prefix' => 'all', 'as' => 'all.'], function () {
-            Route::get('/'      , [OrderController::class, 'index'])->name('index');
-            Route::get('/data'  , [OrderController::class, 'getDataTable'])->name('data');
+            Route::get('/'      , [VotesController::class, 'index'])->name('index');
+            Route::get('/data'  , [VotesController::class, 'getDataTable'])->name('data');
         });
-        Route::get('show/{id}'   , [OrderController::class, 'show'])->name('show');
-        Route::get('changeStatus/{id}'   , [OrderController::class, 'changeStatus'])->name('changeStatus');
-        Route::delete('/{id}'   , [OrderController::class, 'destroy'])->name('delete');
+        Route::get('show/{id}'   , [VotesController::class, 'show'])->name('show');
+        Route::get('changeStatus/{id}'   , [VotesController::class, 'changeStatus'])->name('changeStatus');
+        Route::delete('/{id}'   , [VotesController::class, 'destroy'])->name('delete');
     });
 
     Route::group(['prefix' => 'questions', 'as' => 'questions.'] , function () {

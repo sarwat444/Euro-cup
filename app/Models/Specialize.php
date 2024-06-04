@@ -4,26 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Request;
 
 class Specialize extends Model
 {
-    use HasFactory, Translatable , SoftDeletes;
+    use HasFactory;
     protected $guarded = ['id'];
-    public $translatedAttributes  = ['name'];
 
-    public function createTranslation(Request $request)
+    public function doctor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        foreach (locales() as $key => $language) {
-            foreach ($this->translatedAttributes as $attribute) {
-                if ($request->get($attribute . '_' . $key) != null && !empty($request->$attribute . $key)) {
-                    $this->{$attribute . ':' . $key} = $request->get($attribute . '_' . $key);
-                }
-            }
-            $this->save();
-        }
-        return $this;
+        return $this->belongsTo(User::class , 'doctor_id' ,  'id')->with('doctorInfo') ;
     }
+    public function patient(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class , 'user_id' ,  'id') ;
+    }
+    public function specialize(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Specialize::class , 'specialize_id' ,  'id') ;
+    }
+    public function attachments(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(AppointmentAttachments::class , 'appointment_id' ,  'id') ;
+    }
+
+    public function meeting_info() {
+        return $this->hasOne(UserMeeting::class  ,  'id' , 'meeting_id') ;
+    }
+
 }
