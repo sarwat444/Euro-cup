@@ -7,6 +7,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{asset(config('constants.asset_path').'assets/panel/images/favicon.png')}}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset(config('constants.asset_path').'assets/panel/images/favicon.png')}}" type="image/x-icon">
+
     <title> @yield('title') </title>
     <link rel="stylesheet" type="text/css" href="{{asset(config('constants.asset_path').'assets/panel/css/font-awesome.css')}}">
     <!-- ico-font-->

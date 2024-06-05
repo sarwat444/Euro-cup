@@ -33,8 +33,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $data = $this->user->create();
-        return view('panel.users.create', $data);
+        return view('panel.users.create');
     }
 
     /**

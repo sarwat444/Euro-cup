@@ -52,25 +52,4 @@ class User extends Authenticatable
         $this->update();
        // $this->notify(new SendVerificationCodeNotification($code));
     }
-
-    public function doctorInfo()
-    {
-        return $this->hasOne(DoctorsInfo::class , 'user_id' , 'id')->with('specializeion');
-    }
-
-    public function country()
-    {
-        $lang = App::getLocale();
-        return $this->belongsTo(Country::class , 'country_id' , 'id')->select('id','name_'.$lang.' as name', 'phone_code');
-    }
-
-    public function doctorAppointments(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Appointment::class, 'doctor_id', 'id');
-    }
-    public function patientAppointments(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Appointment::class, 'user_id', 'id');
-    }
-
 }

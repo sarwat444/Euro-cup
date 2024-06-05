@@ -25,14 +25,10 @@ class RegisterRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users' ,
-            'code_country' => 'required|string|max:255',
             'mobile' => 'required|string|max:255',
-            'country_id' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'plz_code' => 'required|string|max:255',
-            'street' => 'nullable|string|max:255',
             'password' => 'required|string|min:8',
-            'gender' => 'required'
+            'gender' => 'required' ,
+            'file' => 'sometimes'
         ];
     }
 }

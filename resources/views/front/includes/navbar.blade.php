@@ -5,7 +5,7 @@
                  <div class="row-table">
                      <div class="col-cell">
                          <div class="logo-area text-center">
-                             <a href="index.html">
+                             <a href="{{ route('home') }}">
                                  <img class="normal-logo" src="{{ asset(config('constants.asset_path') . 'assets/front/images/logo.png')}}" alt="logo">
                                  <img class="sticky-logo" src="{{ asset(config('constants.asset_path') . 'assets/front/images/logo.png')}}" alt="logo">
                              </a>

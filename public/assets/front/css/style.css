@@ -826,11 +826,10 @@ blockquote i:before {
   justify-content: unset;
   align-items: unset;
 }
-.full-width-header .rs-header .menu-area {
 
-}
 .full-width-header .rs-header .menu-area .logo-area {
   position: relative;
+  padding: 10px;
 }
 .full-width-header .rs-header .menu-area .logo-area img {
   max-width: 182px;
@@ -3064,15 +3063,14 @@ blockquote i:before {
   margin: 0;
 }
 .rs-lates-news.home6-latest-news .match-details .title-part .title {
-  position: relative;
-  padding-left: 25px;
-  font-size: 22px;
-  line-height: 40px;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 15px;
-
-  text-transform: uppercase;
+    position: relative;
+    padding-left: 25px;
+    font-size: 19px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 15px;
+    text-transform: uppercase;
 }
 .rs-lates-news.home6-latest-news .match-details .title-part .title:before {
   position: absolute;
@@ -6369,6 +6367,12 @@ font-weight: bold ;
     background-color: #b02028;
     color: #fff;
 }
+.carousel-indicators img
+{
+    height: 80px !important;
+    object-fit: cover !important;
+}
+
 @keyframes roll {
   100% {
     transform: rotate(360deg);

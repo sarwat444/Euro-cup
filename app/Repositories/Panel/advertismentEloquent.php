@@ -4,7 +4,6 @@ namespace App\Repositories\Panel;
 use App\Models\Appointment;
 use App\Models\Category;
 use App\Models\Country;
-use App\Models\DoctorsInfo;
 use App\Models\Advertisment;
 use App\Models\User;
 use DataTables;
@@ -38,7 +37,7 @@ class advertismentEloquent extends HelperEloquent
             if(isset($data['icon'])){
                 $data['icon'] = uploadImage($data['icon'], 'advertisments');
             }
-            Advertisment::updateOrCreate(['id' => 0], $data)->createTranslation($request);
+            Advertisment::updateOrCreate(['id' => 0], $data);
             $message = __('message_done');
             $status = true;
             DB::commit();

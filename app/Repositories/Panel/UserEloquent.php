@@ -1,10 +1,6 @@
 <?php
 
 namespace App\Repositories\Panel;
-
-use App\Models\Appointment;
-use App\Models\Country;
-use App\Models\Specialize;
 use App\Models\User;
 use DataTables;
 use Illuminate\Support\Facades\App;
@@ -56,20 +52,10 @@ class UserEloquent extends HelperEloquent
         ];
         return $response;
     }
-    public function create(): array
-    {
-        $lang = App::getLocale();
-        $data['specializes'] = Specialize::where('active',1)->get();
-        return $data;
-    }
 
     public function show($id) {
         return User::findOrFail($id);
     }
 
-    public function getAllAppointments(): \Illuminate\Database\Eloquent\Collection
-    {
-        return Appointment::all();
-    }
 
 }

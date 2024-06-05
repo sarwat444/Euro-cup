@@ -88,6 +88,13 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
+                                        <div class="form-file">
+                                            <div class="file-upload-wrapper" data-text="Select your file!">
+                                                <input name="file" type="file" class="file-upload-field">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
                                         <div class="text-center">
                                             <button type="submit" class="btn signup-btn">{{ __('front.Register') }}
                                             </button>
@@ -114,16 +121,21 @@
         $(document).ready(function() {
             $('form').submit(function(event) {
                 event.preventDefault();
-                var formData = $(this).serialize();
+
+                var form = $(this)[0];
+                var formData = new FormData(form);
+
                 $.ajax({
                     url: $(this).attr('action'),
                     type: 'POST',
                     data: formData,
+                    processData: false, // Prevent jQuery from automatically transforming the data into a query string
+                    contentType: false, // Set to false to let jQuery handle the content type
                     success: function(response) {
                         toastr.success(
-                        'User Added  Successful'); // Assuming you have Toastr library included
+                        'User Added Successfully'); // Assuming you have Toastr library included
                         window.location.href =
-                        '{{ route('home') }}'; // Change '/success-page' to your actual success page URL
+                        '{{ route('login') }}'; // Change '/success-page' to your actual success page URL
                     },
                     error: function(xhr, status, error) {
                         var errors = JSON.parse(xhr.responseText).errors;
@@ -133,6 +145,7 @@
                     }
                 });
             });
+
 
             /* View Password */
             $('#togglePassword').click(function() {
@@ -145,6 +158,14 @@
                     passwordField.attr('type', 'password');
                     $('#togglePassword i').removeClass('fa-eye-slash').addClass('fa-eye');
                 }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".form-file").on("change", ".file-upload-field", function() {
+                $(this).parent(".file-upload-wrapper").attr("data-text", $(this).val().replace(/.*(\/|\\)/,
+                    ''));
             });
         });
     </script>

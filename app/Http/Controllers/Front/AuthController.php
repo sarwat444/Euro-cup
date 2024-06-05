@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\LoginRequest;
 use App\Http\Requests\Front\RegisterRequest;
 use App\Http\Requests\Front\Auth\UpdateUserDataRequest;
-use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -41,34 +40,29 @@ class AuthController extends Controller
     /* User Register */
     public function register()
     {
-        $lang        = App::getLocale();
-        $countries   = Country::where('status',1)->select('id','phone_code' , 'name_'.$lang.' as name')->get();
-        return view('front.Auth.register' , compact('countries'));
+        return view('front.Auth.register' );
     }
 
 
     /* Create New User */
-    public function storeUser(RegisterRequest $storeUserRequest)
+    public function storeUser(Request $storeUserRequest)
     {
         try {
             // Create a new user instance with the validated data
+            $data =  $storeUserRequest->all() ;
             $user = new User([
                 'first_name' => $storeUserRequest->input('first_name'),
                 'last_name' => $storeUserRequest->input('last_name'),
                 'email' => $storeUserRequest->input('email'),
-                'code_country' => $storeUserRequest->input('code_country'),
                 'mobile' => $storeUserRequest->input('mobile'),
-                'country_id' => $storeUserRequest->input('country_id'),
-                'state' => $storeUserRequest->input('state'),
-                'plz_code' => $storeUserRequest->input('plz_code'),
-                'street' => $storeUserRequest->input('street'),
                 'password' => Hash::make($storeUserRequest->input('password')),
                 'gender' => $storeUserRequest->input('gender'),
             ]);
-
+            if(isset($data['file'])){
+                $data['file'] = uploadImage($data['file'], 'users_files');
+            }
             // Save the user to the database
             $user->save();
-
             // Return success response
             return response()->json(['message' => 'User registered successfully'], 200);
         } catch (\Illuminate\Validation\ValidationException $e) {
