@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('device_token')->nullable();
-            $table->softDeletes();  
+            $table->softDeletes();
             $table->timestamps();
         });
     }

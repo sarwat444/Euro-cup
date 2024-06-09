@@ -27,7 +27,9 @@ class RegisterRequest extends FormRequest
             'email' => 'required|email|unique:users' ,
             'mobile' => 'required|string|max:255',
             'password' => 'required|string|min:8',
-            'gender' => 'required' ,
+            'gender' => 'required',
+            "government" => 'required',
+            "pharmacy_name" => 'required|string|min:8',
             'file' => 'sometimes'
         ];
     }

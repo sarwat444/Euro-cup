@@ -2,6 +2,7 @@
 @push('title', __('front.Register'))
 @push('styles')
     <link rel="stylesheet" type="text/css"href="{{ asset(config('constants.asset_path') . 'assets/front/css/login.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 @section('content')
     <div class="signup-area">
@@ -43,7 +44,12 @@
                                             <input type="text" name="mobile" class="form-control"
                                                 placeholder="{{ __('front.Phone Number') }}">
                                         </div>
-
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" name="pharmacy_name" class="form-control"
+                                                placeholder="{{ __('front.Pharmacy Name') }}">
+                                        </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -52,7 +58,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input type="password" name="password" id="password" class="form-control"
@@ -67,21 +73,46 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-3 d-flex">
-                                                    <div class="form-check" style="margin-right: 25px">
-                                                        <input class="form-check-input" type="radio" value="0"
-                                                            name="gender" id="flexRadioDefault1" checked>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            {{ __('front.Male') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check me-2">
-                                                        <input class="form-check-input" type="radio" value="1"
-                                                            name="gender" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
-                                                            {{ __('front.Female') }}
-                                                        </label>
-                                                    </div>
+                                                <div class="col-md-6">
+                                                    <select name="government" class="form-control" id="iraq-governorates" style="width: 200px;">
+                                                        <option value="baghdad">Baghdad</option>
+                                                        <option value="basra">Basra</option>
+                                                        <option value="maysan">Maysan</option>
+                                                        <option value="dhi-qar">Dhi Qar</option>
+                                                        <option value="muthanna">Muthanna</option>
+                                                        <option value="qadisiyyah">Qadisiyyah</option>
+                                                        <option value="babil">Babil</option>
+                                                        <option value="karbala">Karbala</option>
+                                                        <option value="najaf">Najaf</option>
+                                                        <option value="wasit">Wasit</option>
+                                                        <option value="anbar">Anbar</option>
+                                                        <option value="diyala">Diyala</option>
+                                                        <option value="kirkuk">Kirkuk</option>
+                                                        <option value="salahaddin">Salahaddin</option>
+                                                        <option value="nineveh">Nineveh</option>
+                                                        <option value="duhok">Duhok</option>
+                                                        <option value="erbil">Erbil</option>
+                                                        <option value="sulaymaniyah">Sulaymaniyah</option>
+                                                        <option value="halabja">Halabja</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <div class="col-md-3 d-flex">
+                                                            <div class="form-check" style="margin-right: 25px">
+                                                                <input class="form-check-input" type="radio" value="0"
+                                                                    name="gender" id="flexRadioDefault1" checked>
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    {{ __('front.Male') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check me-2">
+                                                                <input class="form-check-input" type="radio" value="1"
+                                                                    name="gender" id="flexRadioDefault2">
+                                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                                    {{ __('front.Female') }}
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                 </div>
 
                                             </div>
@@ -168,5 +199,10 @@
                     ''));
             });
         });
+    </script>
+    <script>
+            $(document).ready(function() {
+                $('#iraq-governorates').select2();
+            });
     </script>
 @endpush

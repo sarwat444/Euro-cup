@@ -30,15 +30,29 @@
 <body>
 
 @include('front.includes.navbar')
-
+    <!--Preloader area start here-->
+    <div id="loading" class="loading">
+        <div class="rs-loader">
+            <div class="rs-shadow"></div>
+            <div class="rs-gravity">
+                <div class="rs-ball"></div>
+            </div>
+        </div>
+    </div>
+    <!--Preloader area End here-->
 @yield('content')
 
 @include('front.includes.footer')
+
 <script src="{{asset(config('constants.asset_path').'assets/front/js/modernizr-2.8.3.min.js')}}"></script>
 <!-- jquery latest version -->
 <script src="{{asset(config('constants.asset_path').'assets/front/js/jquery.min.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 <!-- bootstrap js -->
 <script src="{{asset(config('constants.asset_path').'assets/front/js/bootstrap.min.js')}}"></script>
+
 <!-- owl.carousel js -->
 <script src="{{asset(config('constants.asset_path').'assets/front/js/owl.carousel.min.js')}}"></script>
 <!-- slick js -->
@@ -65,9 +79,6 @@
 <!-- swiper slider js -->
 <script src="{{asset(config('constants.asset_path').'assets/front/js/swiper.min.js')}}"></script>
 <!-- main js -->
-
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <script src="{{asset(config('constants.asset_path').'assets/front/js/main.js')}}"></script>

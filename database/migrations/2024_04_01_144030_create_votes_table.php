@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->tinyInteger('is_public')->default(0);
-            $table->tinyInteger('is_answered')->default(0);
+            $table->string('match_name' , 255)->nullable();
+            $table->string('home_participant' , 255)->nullable();
+            $table->string('away_participant' ,50)->nullable();
+            $table->string('vote' ,50)->nullable() ;
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('votes');
     }
 };

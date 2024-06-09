@@ -11,60 +11,76 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6>Guess The Winner</h6>
+                    <h6> Guess The Winner </h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body text-center">
-
                     <div class="container">
-                        <div class="row justify-content-center">
+                        <form action="{{ route('sand_vote') }}" method="post">
+                            @csrf
+                            <div class="row justify-content-center">
                                 <div class="col-md-4">
                                     <div class="radio">
-                                        <input id="radio-1" name="radio" type="radio" checked>
+                                        <input id="radio-1" name="home_participant" type="radio" value="Man Clity">
                                         <label for="radio-1" class="radio-label">
                                             <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
                                                 alt="Man City">
                                             Man City
                                         </label>
                                     </div>
+                                    <div class="progress progress_1">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                            aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="radio">
-                                        <input id="radio-3" name="radio" type="radio">
+                                        <input id="radio-3" name="radio" type="radio" value="Man Clity Draw Arsenal">
+
                                         <label for="radio-3" class="radio-label">
                                             <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
                                                 alt="Arsenal">
                                             <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/6.png') }}"
                                                 alt="Man City">
-                                                Draw
+                                            Draw
                                         </label>
+                                    </div>
+                                    <div class="progress progress_2">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                            aria-valuemin="0" aria-valuemax="100">25%</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="radio">
-                                        <input id="radio-2" name="radio" type="radio">
+                                        <input id="radio-2" name="radio" type="radio" value="Arsenal">
+
                                         <label for="radio-2" class="radio-label">
                                             <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/6.png') }}"
                                                 alt="Arsenal">
                                             Arsenal
                                         </label>
                                     </div>
+                                    <div class="progress progress_3">
+                                        <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10"
+                                            aria-valuemin="0" aria-valuemax="100">10%</div>
+                                    </div>
                                 </div>
+                            </div>
 
-
-
-                        </div>
                     </div>
-
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-primary send_result">Send</button>
+                    <button type="submit" class="btn btn-primary send_result">Send</button>
                 </div>
+                 </form>
             </div>
         </div>
     </div>
+
+
+
     <!-- Latest News Start -->
     <div class="rs-lates-news home6-latest-news pt-25">
         <div class="container-fluid2">
@@ -362,128 +378,35 @@
                             </div>
                             <div class="match-list-sidebar">
                                 <div class="match-list">
+                                    @foreach ($matches as $match)
                                     <div class="vote-list">
                                         <div class="sidebar-fixture mb-0">
                                             <div class="list-1">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                    alt="Images">
-                                                <span>Man City</span>
+                                                <img src="{{ $match['home_team']['logo']??'' }}" alt="{{ $match['home_team']['name'] }}">
+                                                <span>{{ $match['home_team']['name'] }}</span>
                                             </div>
                                             <div class="list-2">
                                                 <table>
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <span>Aug 04
-                                                                    2021</span>
-                                                                <span class="match-time">03:00</span>
-                                                                <span>Etihad
-                                                                    Stadium</span>
+                                                                <span>{{ \Carbon\Carbon::parse($match['starting_at'])->format('M d Y') }}</span>
+                                                                <span class="match-time">{{ \Carbon\Carbon::parse($match['starting_at'])->format('H:i') }}</span>
+                                                                <span>{{ $match['venue']['name'] ?? 'Unknown Venue' }}</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <div class="list-3">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                    alt="Images">
-                                                <span>Arsenal </span>
+                                                <img src="{{ $match['away_team']['logo']??'' }}" alt="{{ $match['away_team']['name'] }}">
+                                                <span>{{ $match['away_team']['name'] }}</span>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary vote_btn" data-toggle="modal"
-                                            data-target="#exampleModalCenter">Vote</button>
+                                        <button class="btn btn-primary vote_btn" data-toggle="modal" data-target="#exampleModalCenter">Vote</button>
                                     </div>
-                                    <div class="vote-list">
-                                        <div class="sidebar-fixture">
-                                            <div class="list-1">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                    alt="Images">
-                                                <span>Real Madrid</span>
-                                            </div>
-                                            <div class="list-2">
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span>Aug 06
-                                                                    2021</span>
-                                                                <span class="match-time">03:00</span>
-                                                                <span>Real
-                                                                    Anoeta
-                                                                    Stadium</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="list-3">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                    alt="Images">
-                                                <span>Arsenal </span>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary vote_btn">Vote</button>
-                                    </div>
-                                    <div class="vote-list">
-                                        <div class="sidebar-fixture">
-                                            <div class="list-1">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                    alt="Images">
-                                                <span> Barcelona</span>
-                                            </div>
-                                            <div class="list-2">
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span>Aug 08
-                                                                    2021</span>
-                                                                <span class="match-time">03:00</span>
-                                                                <span>Etihad
-                                                                    Stadium</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="list-3">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                    alt="Images">
-                                                <span>Liverpool</span>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary vote_btn">Vote</button>
-                                    </div>
-                                    <div class="vote-list">
-                                        <div class="sidebar-fixture">
-                                            <div class="list-1">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                    alt="Images">
-                                                <span>Atletico Madrid</span>
-                                            </div>
-                                            <div class="list-2">
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span>Aug 10
-                                                                    2021</span>
-                                                                <span class="match-time">03:00</span>
-                                                                <span>Bernabéu
-                                                                    Stadium</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="list-3">
-                                                <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/1.png') }} "
-                                                    alt="Images">
-                                                <span>Valencia </span>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary vote_btn">Vote</button>
-                                    </div>
+                                @endforeach
+
 
                                 </div>
                             </div>
@@ -602,7 +525,9 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-
+            $('.radio input[type=radio]').on('change', function() {
+                $('.progress').css('display', 'block');
+            });
         });
     </script>
 @endpush

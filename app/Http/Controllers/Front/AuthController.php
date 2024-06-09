@@ -45,21 +45,30 @@ class AuthController extends Controller
 
 
     /* Create New User */
-    public function storeUser(Request $storeUserRequest)
+    public function storeUser(RegisterRequest $storeUserRequest)
     {
         try {
             // Create a new user instance with the validated data
             $data =  $storeUserRequest->all() ;
+            if($data['gender'] == 0 )
+            {
+                $data['gender'] =  'male' ;
+            }else{
+                $data['gender'] =  'female' ;
+            }
             $user = new User([
                 'first_name' => $storeUserRequest->input('first_name'),
                 'last_name' => $storeUserRequest->input('last_name'),
                 'email' => $storeUserRequest->input('email'),
                 'mobile' => $storeUserRequest->input('mobile'),
                 'password' => Hash::make($storeUserRequest->input('password')),
-                'gender' => $storeUserRequest->input('gender'),
+                'gender' => $data['gender'],
+                "government" => $storeUserRequest->input('government'),
+                "pharmacy_name" => $storeUserRequest->input('pharmacy_name'),
             ]);
+
             if(isset($data['file'])){
-                $data['file'] = uploadImage($data['file'], 'users_files');
+                $user->file = uploadImage($data['file'], 'users_files');
             }
             // Save the user to the database
             $user->save();

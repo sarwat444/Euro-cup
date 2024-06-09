@@ -6157,7 +6157,7 @@ max-height: 65px;
 .loading .rs-ball {
   width: 80px;
   height: 80px;
-  background-image: url('images/ball.svg');
+  background-image: url('../images/ball.svg');
   background-size: cover;
   animation: roll 1s linear infinite;
 }
@@ -6372,7 +6372,30 @@ font-weight: bold ;
     height: 80px !important;
     object-fit: cover !important;
 }
-
+.auth_dropdown a
+{
+font-size: 14px;
+}
+.progress-bar
+{
+    background-color: #b22029;
+}
+.progress
+{
+    border-radius: 0 ;
+}
+.radio
+{
+    margin: 0 ;
+}
+.progress
+{
+    display: none;
+}
+.progress-bar
+{
+    margin-top: -6px;
+}
 @keyframes roll {
   100% {
     transform: rotate(360deg);

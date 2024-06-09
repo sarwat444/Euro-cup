@@ -421,5 +421,6 @@ return [
         'next' => 'Next',
     ],
     'OK'=> 'OK' ,
-    'appointment_status' => 'appointment status'
+    'appointment_status' => 'appointment status' ,
+    'Pharmacy Name' => 'Pharmacy Name' ,
 ];

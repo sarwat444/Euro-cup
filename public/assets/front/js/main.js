@@ -28,8 +28,8 @@
     // wow init
     new WOW().init();
 
-   
-   
+
+
 
 
 
@@ -53,7 +53,7 @@
             responsiveClass: true
         });
     }
-   
+
     // Menu js
     if($(window).width() < 992) {
       $('.rs-menu').css('height', '0');
@@ -64,7 +64,7 @@
          $('.rs-menu').css('z-index', '1');
      });
     }
-    
+
     //Canvas Menu
     var navexpander = $('#nav-expander');
     if(navexpander.length){
@@ -84,13 +84,14 @@
     /*-------------------------------------
      Preloder Js here
      ---------------------------------------*/
-    $(window).load(function() {
+     $(window).on('load', function() {
         $("#loading").delay(800).fadeOut(800);
         $("#loading-center").click(function() {
-        $("#loading").fadeOut(800);
-        })
-    })  
-    
+            $("#loading").fadeOut(800);
+        });
+    });
+
+
     /*-------------------------------------
     OwlCarousel
     -------------------------------------*/
@@ -161,7 +162,7 @@
             }
         });
     });
-    
 
-	
+
+
 })(jQuery);

@@ -11,17 +11,30 @@ class UserEloquent extends HelperEloquent
 
     public function getDataTable()
     {
-        $users = User::select('*')->where('user_type', 'user')->get();
+
+        $users = User::select('*')->get();
         return DataTables::of($users)
             ->addIndexColumn()
-            ->addColumn('name', function ($patient) {
-                return $patient->first_name . ' ' . $patient->last_name;
-            })->addColumn('created at', function ($patient) {
-                return date('d.m.y H:i', strtotime($patient->created_at));
-            })->addColumn('action', function ($patient) {
-                return view('panel.users.partials.actions', compact('patient'))->render();
+            ->addColumn('first_name', function ($user) {
+                return $user->first_name;
+            })->addColumn('last_name', function ($user) {
+                return  $user->last_name;
+            })->addColumn('email', function ($user) {
+                return $user->email;
+            })->addColumn('phone', function ($user) {
+                return $user->mobile;
+            })->addColumn('pharmacy_name', function ($user) {
+                return $user->pharmacy_name;
+            })->addColumn('government', function ($user) {
+                return $user->government;
+            })->addColumn('gender', function ($user) {
+                return $user->gender;
+            })->addColumn('file', function ($user) {
+                return view('panel.users.partials.file', compact('user'))->render();
+            })->addColumn('created at', function ($user) {
+                return date('d.m.y H:i', strtotime($user->created_at));
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['file'])
             ->make(true);
     }
 

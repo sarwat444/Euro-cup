@@ -43184,3 +43184,29 @@ body,html
     vertical-align: middle;
     font-weight: 600;
 }
+.swal2-icon.swal2-success [class^=swal2-success-line]
+{
+    display: block;
+    position: absolute;
+    z-index: 2;
+    height: .3125em;
+    border-radius: .125em;
+    background-color: #ad1f27;
+}
+    .custom-excel-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .custom-excel-button:hover {
+        background-color: #45a049;
+    }
