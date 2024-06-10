@@ -5,6 +5,7 @@ use App\Models\{Vote,Winner};
 use DataTables;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class VoteEloquent extends HelperEloquent
 {
@@ -48,8 +49,7 @@ class VoteEloquent extends HelperEloquent
     public function store($request) {
         DB::beginTransaction();
         try {
-            $data            = $request->all();
-            $data['user_id'] = $this->getUser(true)->id;
+            $data = $request->all();
             Vote::updateOrCreate(['id' => 0], $data);
             DB::commit();
             $message = __('message_done');
@@ -99,26 +99,28 @@ class VoteEloquent extends HelperEloquent
         ];
     }
 
+public function view_statistics($request)
+{
+    $match_id = $request->match_id;
+    $home_team = $request->home_participant;
+    $away_team = $request->away_participant;
 
-    public function delete($id)
-    {
-        $vote = Vote::find($id);
+    $total_votes = Vote::where('match_id', $match_id)->count();
+    $team_1_votes = Vote::where(['match_id' => $match_id, 'vote' => $home_team])->count();
+    $team_1_draw_team_2_votes = Vote::where(['match_id' => $match_id, 'vote' => 'Draw ' . $home_team . ' ' . $away_team])->count();
+    $team_2_votes = Vote::where(['match_id' => $match_id, 'vote' => $away_team])->count();
 
-        if(!$vote) {
-            return [
-                'message' => __('message_error'),
-                'status' => false,
-            ];
-        }
+    $team_1_percentage = $total_votes > 0 ? ($team_1_votes / $total_votes) * 100 : 0;
+    $team_1_draw_team_2_percentage = $total_votes > 0 ? ($team_1_draw_team_2_votes / $total_votes) * 100 : 0;
+    $team_2_percentage = $total_votes > 0 ? ($team_2_votes / $total_votes) * 100 : 0;
 
-        $vote->cancelled = 1;
-        $vote->save();
-
-        $response = [
-            'message' => __('message_done'),
-            'status' => true,
-        ];
-        return $response;
-    }
+    return view('front.voteStatistics', [
+        'home_team' => $home_team,
+        'away_team' => $away_team,
+        'home_team_percentage' => $team_1_percentage,
+        'draw_percentage' => $team_1_draw_team_2_percentage,
+        'away_team_percentage' => $team_2_percentage,
+    ]);
+}
 
 }

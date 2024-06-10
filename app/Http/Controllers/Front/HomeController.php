@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $sliders  = Advertisment::where(['active' => 1])->limit(5)->get();
         $startDate = '2024-06-14';
-        $endDate = '2024-06-14';
+        $endDate = '2024-06-15';
         $apiToken = 'mnXQIe4GiLIHqUJFIPtU3Irb69ymdXj8oWt5AJZ57DjxjyCfZOFzolgkHRs6';
 
         $matches = ApiHelper::getMatches($startDate, $endDate, $apiToken);

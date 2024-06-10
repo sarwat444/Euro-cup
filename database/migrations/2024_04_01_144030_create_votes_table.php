@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('match_id')->nullable();
             $table->string('match_name' , 255)->nullable();
             $table->string('home_participant' , 255)->nullable();
             $table->string('away_participant' ,50)->nullable();

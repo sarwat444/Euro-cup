@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Panel\VoteEloquent;
+
 class VoteController extends Controller
 {
     private $vote ;
@@ -13,9 +14,12 @@ class VoteController extends Controller
         $this->vote = $VoteElequent;
     }
 
-    public function sand_vote(Request $request)
+    public function send_vote(Request $request)
     {
         $this->vote->store($request);
-        return redirect()->back()->with('success' , 'Your Vote Send Successfuly') ;
+    }
+    public function vote_statstics(Request $request) {
+
+        return $this->vote->view_statistics($request);
     }
 }

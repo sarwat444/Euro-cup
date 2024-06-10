@@ -11,74 +11,66 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6> Guess The Winner </h6>
+                    <h6>Guess The Winner</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body text-center">
-                    <div class="container">
-                        <form action="{{ route('sand_vote') }}" method="post">
-                            @csrf
+                <form action="{{ route('send_vote') }}" method="post" id="send_vote">
+                    @csrf
+                    <div class="modal-body text-center">
+                        <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-md-4">
                                     <div class="radio">
-                                        <input id="radio-1" name="home_participant" type="radio" value="Man Clity">
+                                        <input id="radio-1" name="radio" type="radio" value="" required>
                                         <label for="radio-1" class="radio-label">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Man City">
-                                            Man City
+                                            <img id="home-team-logo" src="" alt="Home Team Logo">
+                                            <span id="home-team-name"></span>
                                         </label>
-                                    </div>
-                                    <div class="progress progress_1">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                            aria-valuemin="0" aria-valuemax="100">25%</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="radio">
-                                        <input id="radio-3" name="radio" type="radio" value="Man Clity Draw Arsenal">
+                                        <input id="radio-3" name="radio" type="radio" value="Draw" required>
 
                                         <label for="radio-3" class="radio-label">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Arsenal">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/6.png') }}"
-                                                alt="Man City">
+                                            <img id="home-draw-logo" src="" alt="Home Draw Logo">
+                                            <img id="away-draw-logo" src="" alt="Away Draw Logo">
                                             Draw
                                         </label>
                                     </div>
-                                    <div class="progress progress_2">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                            aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="radio">
-                                        <input id="radio-2" name="radio" type="radio" value="Arsenal">
-
+                                        <input id="radio-2" name="radio" type="radio" value="" required>
                                         <label for="radio-2" class="radio-label">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/6.png') }}"
-                                                alt="Arsenal">
-                                            Arsenal
+                                            <img id="away-team-logo" src="" alt="Away Team Logo">
+                                            <span id="away-team-name"></span>
                                         </label>
-                                    </div>
-                                    <div class="progress progress_3">
-                                        <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10"
-                                            aria-valuemin="0" aria-valuemax="100">10%</div>
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer ">
-                    <button type="submit" class="btn btn-primary send_result">Send</button>
-                </div>
-                 </form>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary send_result">Send</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
+
+    <div class="modal fade guess_modal" id="successVoteModel" tabindex="-1" role="dialog"
+    aria-labelledby="successVoteModel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+                <div class="modal-body text-center" id="statistics_data">
+                </div>
+        </div>
+    </div>
+</div>
 
 
     <!-- Latest News Start -->
@@ -93,145 +85,40 @@
                             </div>
                             <div class="match-list-sidebar">
                                 <div class="match-list">
-                                    <div class="sidebar-fixture">
-                                        <div class="list-1">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Images">
-                                            <span>Man City</span>
+                                    @foreach ($matches as $match)
+                                        <div class="vote-list">
+                                            <div class="sidebar-fixture mb-0">
+                                                <div class="list-1">
+                                                    <img src="{{ $match['home_team']['logo'] ?? '' }}"
+                                                        alt="{{ $match['home_team']['name'] }}">
+                                                    <span>{{ $match['home_team']['name'] }}</span>
+                                                </div>
+                                                <div class="list-2">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span>{{ \Carbon\Carbon::parse($match['starting_at'])->format('M d Y') }}</span>
+                                                                    <span
+                                                                        class="match-time">{{ \Carbon\Carbon::parse($match['starting_at'])->format('H:i') }}</span>
+
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="list-3">
+                                                    <img src="{{ $match['away_team']['logo'] ?? '' }}"
+                                                        alt="{{ $match['away_team']['name'] }}">
+                                                    <span>{{ $match['away_team']['name'] }}</span>
+                                                </div>
+                                            </div>
+
+
                                         </div>
-                                        <div class="list-2">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span>Aug 01
-                                                                2021</span>
-                                                            <span class="match-time">03:00</span>
-                                                            <span>Etihad
-                                                                Stadium</span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="list-3">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/7.png') }}"
-                                                alt="Images">
-                                            <span>Arsenal </span>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-fixture">
-                                        <div class="list-1">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Images">
-                                            <span>Real Madrid</span>
-                                        </div>
-                                        <div class="list-2">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span>Aug 01
-                                                                2021</span>
-                                                            <span class="match-time">03:00</span>
-                                                            <span>Real
-                                                                Anoeta
-                                                                Stadium</span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="list-3">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/2.png') }}"
-                                                alt="Images">
-                                            <span>Arsenal </span>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-fixture">
-                                        <div class="list-1">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Images">
-                                            <span> Barcelona</span>
-                                        </div>
-                                        <div class="list-2">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span>Aug 01
-                                                                2021</span>
-                                                            <span class="match-time">03:00</span>
-                                                            <span>Etihad
-                                                                Stadium</span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="list-3">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/10.png') }}"
-                                                alt="Images">
-                                            <span>Liverpool</span>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-fixture">
-                                        <div class="list-1">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/6.png') }}"
-                                                alt="Images">
-                                            <span>Atletico Madrid</span>
-                                        </div>
-                                        <div class="list-2">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span>Aug 01
-                                                                2021</span>
-                                                            <span class="match-time">03:00</span>
-                                                            <span>Bernabéu
-                                                                Stadium</span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="list-3">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Images">
-                                            <span>Valencia </span>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-fixture">
-                                        <div class="list-1">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Images">
-                                            <span>Atletico Madrid</span>
-                                        </div>
-                                        <div class="list-2">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span>Aug 01
-                                                                2021</span>
-                                                            <span class="match-time">03:00</span>
-                                                            <span>Bernabéu
-                                                                Stadium</span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="list-3">
-                                            <img src="{{ asset(config('constants.asset_path') . 'assets/front/images/team-logo/8.png') }}"
-                                                alt="Images">
-                                            <span>Valencia </span>
-                                        </div>
-                                    </div>
-                                    <div class="link">
-                                        <a href="#">All Winners</a>
-                                    </div>
+                                    @endforeach
+
+
                                 </div>
                             </div>
                         </div>
@@ -379,33 +266,45 @@
                             <div class="match-list-sidebar">
                                 <div class="match-list">
                                     @foreach ($matches as $match)
-                                    <div class="vote-list">
-                                        <div class="sidebar-fixture mb-0">
-                                            <div class="list-1">
-                                                <img src="{{ $match['home_team']['logo']??'' }}" alt="{{ $match['home_team']['name'] }}">
-                                                <span>{{ $match['home_team']['name'] }}</span>
+                                        <div class="vote-list">
+                                            <div class="sidebar-fixture mb-0">
+                                                <div class="list-1">
+                                                    <img src="{{ $match['home_team']['logo'] ?? '' }}"
+                                                        alt="{{ $match['home_team']['name'] }}">
+                                                    <span>{{ $match['home_team']['name'] }}</span>
+                                                </div>
+                                                <div class="list-2">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span>{{ \Carbon\Carbon::parse($match['starting_at'])->format('M d Y') }}</span>
+                                                                    <span
+                                                                        class="match-time">{{ \Carbon\Carbon::parse($match['starting_at'])->format('H:i') }}</span>
+
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="list-3">
+                                                    <img src="{{ $match['away_team']['logo'] ?? '' }}"
+                                                        alt="{{ $match['away_team']['name'] }}">
+                                                    <span>{{ $match['away_team']['name'] }}</span>
+                                                </div>
                                             </div>
-                                            <div class="list-2">
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span>{{ \Carbon\Carbon::parse($match['starting_at'])->format('M d Y') }}</span>
-                                                                <span class="match-time">{{ \Carbon\Carbon::parse($match['starting_at'])->format('H:i') }}</span>
-                                                                <span>{{ $match['venue']['name'] ?? 'Unknown Venue' }}</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="list-3">
-                                                <img src="{{ $match['away_team']['logo']??'' }}" alt="{{ $match['away_team']['name'] }}">
-                                                <span>{{ $match['away_team']['name'] }}</span>
-                                            </div>
+
+                                            <button class="btn btn-primary vote_btn"
+                                                data-match-id = "{{ $match['id'] }}"
+                                                data-home-team="{{ $match['home_team']['name'] }}"
+                                                data-away-team="{{ $match['away_team']['name'] }}"
+                                                data-match-name="{{ $match['name'] }}"
+                                                data-starting-at="{{ $match['starting_at'] }}"
+                                                data-venue="{{ $match['venue']['name'] ?? 'Unknown Venue' }}"
+                                                data-home-team-logo="{{ $match['home_team']['logo'] ?? '' }}"
+                                                data-away-team-logo="{{ $match['away_team']['logo'] ?? '' }}">Vote</button>
                                         </div>
-                                        <button class="btn btn-primary vote_btn" data-toggle="modal" data-target="#exampleModalCenter">Vote</button>
-                                    </div>
-                                @endforeach
+                                    @endforeach
 
 
                                 </div>
@@ -525,9 +424,87 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('.radio input[type=radio]').on('change', function() {
-                $('.progress').css('display', 'block');
-            });
+                $('.vote_btn').on('click', function() {
+                    const matchData = {
+                        match_id: $(this).data('match-id'),
+                        home_team: $(this).data('home-team'),
+                        away_team: $(this).data('away-team'),
+                        starting_at: $(this).data('starting-at'),
+                        venue: $(this).data('venue'),
+                        match_name: $(this).data('match-name'),
+                        home_team_logo: $(this).data('home-team-logo'),
+                        away_team_logo: $(this).data('away-team-logo')
+                    };
+                    //send Request  To Retrive Statistics
+
+                    // Update the modal with the match data
+                    $('#home-team-name').text(matchData.home_team);
+                    $('#away-team-name').text(matchData.away_team);
+                    $('input[name="home_participant"]').val(matchData.home_team);
+
+                    $('#radio-1').val(matchData.home_team);
+                    $('#radio-3').val(`Draw ${matchData.home_team} ${matchData.away_team}`);
+                    $('#radio-2').val(matchData.away_team);
+
+                    // Update the team logos
+                    $('#home-team-logo').attr('src', matchData.home_team_logo);
+                    $('#home-draw-logo').attr('src', matchData.home_team_logo);
+                    $('#away-draw-logo').attr('src', matchData.away_team_logo);
+                    $('#away-team-logo').attr('src', matchData.away_team_logo);
+
+                    // Reset the radio buttons
+                    $('input[name="radio"]').prop('checked', false);
+                    // Show the modal
+                    $('#exampleModalCenter').modal('show');
+
+                    $('#send_vote').off('submit').on('submit', function(event) {
+                                event.preventDefault(); // Prevent the form from submitting the default way
+                                // Get the selected radio value
+                                const selectedVote = $('input[name="radio"]:checked').val();
+                                // Include the selected vote and match data in the AJAX request
+                                $.ajax({
+                                    url: $(this).attr('action'),
+                                    method: 'POST',
+                                    data: {
+                                        match_id : matchData.match_id ,
+                                        home_participant: matchData.home_team,
+                                        away_participant: matchData.away_team,
+                                        vote: selectedVote,
+                                        match_name: matchData.match_name,
+                                        user_id: "{{ Auth::id() }}",
+                                        _token: "{{ csrf_token() }}"
+                                    },
+                                    success: function(response) {
+                                        $.ajax({
+                                    url:"{{ route('vote_statstics') }}",
+                                    method: 'post',
+                                    data: {
+                                        match_id : matchData.match_id ,
+                                        home_participant: matchData.home_team,
+                                        away_participant: matchData.away_team,
+                                        user_id: "{{ Auth::id() }}",
+                                        _token: "{{ csrf_token() }}"
+                                    },
+                                    success: function(response) {
+                                        $('#statistics_data').html(response); ;
+                                    },
+                                    error: function(xhr, status, error) {
+                                        // Handle any errors
+                                        console.error(error);
+                                    }
+                                });
+                                        // Close the modal after a successful submission
+                                        $('#exampleModalCenter').modal('hide');
+                                        $('#successVoteModel').modal('show') ;
+                                    },
+                                    error: function(xhr, status, error) {
+                                        // Handle any errors
+                                        console.error(error);
+                                    }
+                                });
+                     });
+
         });
+    });
     </script>
 @endpush

@@ -44,7 +44,10 @@ Route::group(
             ], function () {
                 Route::get( '/', [ HomeController::class, 'index' ] )->name( 'home' );
                 Route::get( 'logout', [ AuthController::class, 'logout' ] )->name( 'logout' );
-                Route::post('/sand_vote' , [ VoteController::class, 'sand_vote'])->name('sand_vote');
+                Route::post('/send_vote' , [ VoteController::class, 'send_vote'])->name('send_vote');
+                Route::post('/vote_statstics' , [ VoteController::class, 'vote_statstics'])->name('vote_statstics');
+
+
             }
         );
     }
